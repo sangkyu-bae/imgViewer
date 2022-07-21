@@ -1,0 +1,81 @@
+.insert_container{
+    display: flex;
+    max-width: 1500px;
+    margin: 50px auto;
+}
+
+.insert_box{
+    min-width: 700px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-bottom: 1px solid gray;
+    height: 665px;
+}
+.ele_box{
+    display: flex;
+    margin-bottom: 50px;
+
+}
+.n-radio{
+   margin-left: 50px;
+   width: 300px;
+   height: 25px;
+}
+#type_1{
+    margin-top: 30px;
+
+}
+.title_head{
+    font-size: 20px;
+    font-weight: bold;
+}
+.text_box{
+    margin-top: 30px;;
+}
+.off_insert{
+    width: 130px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    margin-right: 5px;
+}
+
+.add_iinsert_box{
+    width: 130px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    background-color: black;
+    color: white;
+}
+form {
+    width: 500px;
+    margin: 0 auto;
+}
+.btn_box{
+    width: 270px;
+    margin: 150px auto;
+}
+
+.off_insert:hover{
+    cursor: pointer;
+}
+.add_iinsert_box:hover{
+    cursor: pointer;
+}
+
+.file_box{
+    display: flex;
+}
+
+.images{
+    width: 250px;
+    height: 150px;
+}
+img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}

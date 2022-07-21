@@ -1,0 +1,18 @@
+.card{
+    position: relative;
+    height: 100%;
+}
+
+.ele_time{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    color: white;
+    font-size: 1em;
+}
+.utc_time{
+    margin-bottom: 7%;
+}
+.block{
+    display: block;
+}

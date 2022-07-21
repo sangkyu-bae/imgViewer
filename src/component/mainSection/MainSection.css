@@ -1,0 +1,16 @@
+
+.table_box {
+    width: 1000px;
+    margin: 80px auto;
+}
+table{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+thead{
+    border-bottom: 2px solid black;
+}
+tr{
+    border-bottom: 1px solid gray;
+}

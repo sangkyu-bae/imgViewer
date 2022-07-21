@@ -1,0 +1,93 @@
+.join_box{
+    margin-top: 12px;
+}
+
+.join_form_container{
+    width: 560px;
+    margin: 0 auto;
+}
+  .join_label{
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .join_box{
+    margin-top: 12px;
+  }
+  .join_input{
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+    border:solid 1px #dadada;
+  }
+  .join_label:hover{
+    cursor: pointer;
+  }
+  .join_input:hover{
+    cursor: pointer;
+  }
+  .join_submit{
+    margin-top: 25px;
+    width: 100%;
+    height: 48px;
+    border:none;
+    background-color: #132C6F;
+    color: white;
+    font-size: 18px;
+  }
+  .join_submit:hover{
+    cursor: pointer;
+  }
+  .plain_btn {
+    margin-left: 15px;
+    display: inline-block;
+    line-height: 26px;
+    text-align: center;
+    background: #f3f3f3;
+    border:none;
+    font-weight: bold;
+    width: 80px;
+    padding: 10px;
+    margin-bottom: 11px;
+}
+.nonclick {
+    background: #f3f3f3;
+    height: 22px;
+    display: inline-block;
+    margin-bottom: 7px;
+    border: 1px solid #ddd;
+}
+
+.plain_btn:hover{
+    cursor: pointer;
+}
+.rmobile1 {
+    width: 90px;
+    height: 23px;
+    font-size: 12px;
+}
+.section_one span, .pr_info_s {
+    font-size: 14px;
+    font-weight: bold;
+    color: #b2b2b2;
+}
+.phons {
+    width: 90px;
+}
+.recipient_info {
+    width: 70px;
+    height: 23px;
+    line-height: 23px;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.fix_adrr_ti {
+    width: 230px;
+    
+}
+.fix_adrr_mi {
+    width: 430px;
+}
+

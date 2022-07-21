@@ -1,0 +1,37 @@
+.container{
+    margin:0 auto;
+    max-width: 1500px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+}
+.headLink{
+    text-decoration: none;
+    color: white;
+}
+.headcont{
+    margin-right: auto;
+    width: 100px;
+    height: 100%;
+    font-size: 34px;
+    font-weight: bold;
+    background-color: #132C6F;
+    font-size: 24px;
+    color: white;
+    width: 264px;
+    text-align: center;
+    line-height: 70px;
+
+}
+.navbar-nav{
+    width: 80px;
+    color: #808080;
+    font-size: 15px;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+}
+.navbar-nav:hover{
+    cursor: pointer;
+}

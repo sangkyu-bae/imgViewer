@@ -1,0 +1,29 @@
+.login_container{
+    min-width: 680px;
+    min-height: 550px;
+    margin: 0 auto;
+    border:1px solid ;
+}
+.login_form{
+    padding-top: 105px;
+    padding-bottom: 20px;
+    width: 480px;
+    margin: 0 auto;
+}
+
+.form_box{
+    width: 100%;
+    height: 60px;
+    
+}
+.sub_from{
+    padding-left: 15px;
+    margin-top:50px;
+    background-color: #132C6F;
+    color: white;
+    border: solid 1px rgba(0,0,0,.15);
+    border-radius: 6px;
+}
+.sub_from:hover{
+    cursor: pointer;
+}
