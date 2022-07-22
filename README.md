@@ -1,4 +1,4 @@
-# 인공위성 데이터 이미지 뷰어 👵👴
+# NetCdf파일 데이터 이미지 뷰어 👵👴
 
 #### Project execution period : 2022.07~
 
