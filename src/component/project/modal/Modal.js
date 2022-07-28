@@ -10,69 +10,34 @@ import { faXmarkCircle } from '@fortawesome/free-regular-svg-icons';
 import useInterval from 'react-useinterval';
 
 function Modal(props) {
-    const settings={
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-    }
-    const data=props.data;
-
-    const datas=[
-        {
-            id:1,
-            src:"img/real1.png"
-        },
-        {
-            id:1,
-            src:"img/real2.png"
-        },
-        {
-            id:1,
-            src:"img/real3.png"
-        },
-        {
-            id:1,
-            src:"img/real4.png"
-        },
-        {
-            id:1,
-            src:"img/real5.png"
-        },
-    ]
-    // const isMode=props.isMode;
-
-    // const sliderRef=useRef();
-
-    // console.log(isMode);
-
-    // useEffect(()=>{
-    //     if(isMode) sliderRef.current.slickPause();
-    //     else sliderRef.current.slickPlay();
-    // },[isMode])
-
-
     const [intervId,setInervId]=useState();
     const [checkePoints,setCheckPoints]=useState(0);
+    const [imgData,setImgData]=useState([]);
 
     useEffect(()=>{
-        if(props.isAuto) changeImage();
+        setImgData(props.imageData);
     },[])
+    useEffect(()=>{
+        if(imgData.length>0){
+            changeImage();
+        }
+    },[imgData])
 
-    const changeImage=()=>{
+    const changeImage=()=>{ 
+
         if(!intervId){
-            const count =datas.length;
+            const count =imgData.length;
             let checkePoint=0;
-
+           
             let interveId=setInterval(()=>{
-                imageBox.current.src=datas[checkePoint].src;
+                imageBox.current.src=imgData[checkePoint].imgHtml;
                 checkePoint++;
                 
                 if(checkePoint===count&&props.isAuto) {
                     clearInterval(interveId);
                     setTimeout(() => {
-                        props.changeStat();
+                        props.changeCheckCount();
+                        props.changehiddenModal(); 
                     }, 700);
                 }else if(checkePoint===count&&!props.isAuto){
                     checkePoint=0;
@@ -82,13 +47,11 @@ function Modal(props) {
             setInervId(interveId);
         }
     }
-
-
+ 
     const stopImage=()=>{
         clearInterval(intervId);
         setInervId(null);
     }
-
 
     let btn;
     if(!intervId){
@@ -103,69 +66,49 @@ function Modal(props) {
         </button>
     }
   
-
-
     const imageBox=useRef();
 
-    const prevImg=e=>{
+    const prevImg=()=>{
         let currentData;
         if(checkePoints===0) {
-            currentData=datas[datas.length-1];
-            setCheckPoints(datas.length-1);
-
+            currentData=imgData[imgData.length-1];
+            setCheckPoints(imgData.length-1);
         }else {
-            currentData=datas[checkePoints-1];
+            currentData=imgData[checkePoints-1];
             setCheckPoints(checkePoints-1);
-
         }
-        const imgSrc=currentData.src;
+        const imgSrc=currentData.imgHtml;
         imageBox.current.src=imgSrc;
     }
 
-    const nextImg=e=>{
+    const nextImg=()=>{
         let currentData;
-        if(checkePoints===datas.length-1) {
-            currentData=datas[0];
+        if(checkePoints===imgData.length-1) {
+            currentData=imgData[0];
             setCheckPoints(0);
-
         }else {
-            currentData=datas[checkePoints+1];
+            currentData=imgData[checkePoints+1];
             setCheckPoints(checkePoints+1);
-
         }
-        const imgSrc=currentData.src;
+        const imgSrc=currentData.imgHtml;
         imageBox.current.src=imgSrc;
     }
 
-    const moveFirst=e=>{
-        imageBox.current.src=datas[0].src;
+    const moveFirst=()=>{
+        imageBox.current.src=imgData[0].imgHtml;
         setCheckPoints(0);
     }
-    const moveLast=e=>{
-        imageBox.current.src=datas[datas.length-1].src;
-        setCheckPoints(datas.length-1);
+    const moveLast=()=>{
+        imageBox.current.src=imgData[imgData.length-1].imgHtml;
+        setCheckPoints(imgData.length-1);
     }
 
-    
-    
-
     return (
-        // <div className='background'>
-        //     <div className='modal'>zds
-        //     <FontAwesomeIcon icon={faXmarkSquare}  size="2x" 
-        //         onClick={props.changeStat}   color="#BDBDBD" className='xbox'/>
-        //         <Slider {...settings}>
-        //                     {data.map(item=>(
-        //                            <Card id={item.id} src={item.src}/>
-        //                     ))}
-        //         </Slider>
-        //     </div>
-        // </div>
         <div className='background'>
             <div className='modals'>
             <FontAwesomeIcon icon={faXmarkSquare}  size="2x" 
                 onClick={(e)=>{
-                    props.changeStat(e);
+                    props.changehiddenModal(e);
                     stopImage()
                 }}   color="#BDBDBD" className='xbox'/>
             <div className='cards'>
@@ -173,12 +116,6 @@ function Modal(props) {
                     [GK2A AI RGB TURE] 2022-06-27 06:10 UTC(2022-06-27 15:10 KST) KMA
                 </div>
                 <div className='move_container'>
-                    {/* <div>
-                        <select className={'play_time_box ' +(intervId ? 'Pauseas':'')} disabled={intervId}>
-                            <option value="1">최근 1시간</option>
-                            <option value="2">최근 2시간</option>
-                        </select>
-                    </div> */}
                     <div className='button_container'>
                         <button className={'firsts buttons ' + (intervId ? 'Pauseas':'')} disabled={intervId} onClick={moveFirst}>
                             <FontAwesomeIcon icon= {faBackwardFast} size='lg'/>
@@ -186,9 +123,6 @@ function Modal(props) {
                         <button className={'firsts buttons ' + (intervId ? 'Pauseas':'')} disabled={intervId} onClick={prevImg}>
                             <FontAwesomeIcon icon= {faStepBackward} size='lg'/>
                         </button>
-                        {/* <button className='firsts buttons' onClick={startImage}>
-                            <FontAwesomeIcon icon= {faPlay} size='lg'/>
-                        </button> */}
                         {btn}
                         <button className={'firsts buttons ' + (intervId ? 'Pauseas':'')} disabled={intervId} onClick={nextImg}>
                             <FontAwesomeIcon icon= {faStepForward} size='lg'/>
@@ -199,38 +133,12 @@ function Modal(props) {
                     </div>
                   
                     <div className='sliderWrap'>
-                        {/* <div className='silder'>
-                            <div className='stepBar '>
-
-                            </div>
-                            <div className='stepDot'>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                            </div>
-                        </div> */}
                         <span className='txtTime'>8:50</span>
                     </div>
                 </div>
-            
-                
-               <img className='project_img' alt={data[0].id}  src={`${process.env.PUBLIC_URL}/${datas[0].src}`} ref={imageBox}/>
+                {imgData.length>0?
+                    <img className='project_img'src={imgData[0].imgHtml} ref={imageBox}/> :null
+                }
             </div>
 
             </div>

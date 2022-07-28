@@ -10,19 +10,6 @@
     flex:0.2;
     width: 0;
 }
-.borders_right{
-   
-}
-
-.scond_img_container{
-   
-}
-.first{
-   
-}
-.scond_sub_img_box{
- 
-}
 
 #stop_btn{
     border-top-left-radius: 5px;
@@ -38,14 +25,13 @@
 
 .btn_group button{
     border: 1px solid skyblue;
-
     background-color: rgba(0,0,0,0);
     color: skyblue;
     padding: 5px;
 }
 .btn_group{
-    margin-left: 50px;
-    margin-bottom: 20px;
+    flex: 1;
+    margin-left: 5em;
 }
 
 .btn_group button:hover{
@@ -58,4 +44,15 @@
 }
 .slick-dots{
     display: none;
+}
+
+.scond_boxs{
+    display: flex;
+}
+.first_boxs{
+    margin-top: 2em;
+}
+.btn_group .first_boxs .active{
+    color: white;
+    background-color: skyblue;
 }

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Card.css';
 
 function Card(props) {
     return (
-        <div className='card' onClick={props.changeShowModal} key={props.id}>
+        <div className='card' onClick={()=>{
+            // props.changeShowModal();
+        }} key={props.id}>
             <span className='ele_time block'>
                 <span className='utc_time block'>
                     <span>utc 2022-06-16 01:56:05</span>

@@ -34,7 +34,7 @@ function Bottom(props) {
         <div className='img_container'>
             <div className='img_flex_box'>
                 <div className='main_img_box borders_right'>
-                    <Card id={data[0].id} src={data[0].src} changeShowModal={props.changeShowModal}/>  
+                    <Card id={data[0].id}  src={data[0].src} changeShowModal={props.changeShowModal}/>  
                 </div>
                 <div className='main_img_box scond_box'>
                      <div className='scond_main_img_box sss'>   

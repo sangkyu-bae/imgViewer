@@ -10,16 +10,19 @@ import Card from './Card';
 function Title(props) {
     const data=props.data;
     const settings = props.settings;
+    // const imgData=props.initImgData;
     const [NewImg,setNewImg]=useState('');
-    
+    const [imgData,setImgData]=useState([]);
+
+    useEffect(() =>{
+        setImgData(props.initImgData);
+    },[props.initImgData])
+
     useEffect(()=>{
-        props.imgSrc.forEach(item=> {
-            console.log(item.id);
-        });
         if(props.imgSrc.length>1){
             setNewImg( <Slider {...settings}>
             {props.imgSrc.map(item=>(
-                <Card id={item.id} src={item.src} changeShowModal={props.changeModal}/>
+                <Card id={item.id} src={item.src} changeShowModal={props.changeModal} getImages={props.getImages} />
           ))}
       </Slider>)
             setTimeout(()=>{
@@ -28,27 +31,49 @@ function Title(props) {
         }else{
             setNewImg(<Card id={data[0].id} src={props.imgData} changeShowModal={props.changeModal}/> )  
         }
-
     },[props.imgSrc])
-
     return (
         <div className='img_box'>
             <div className='dispaly_flex'>
-                <div className='main_img borders'>
-                 {NewImg}
+                <div className='main_img borders' onClick={()=>{ 
+                    props.getImages("/api/image")
+                    props.changePayLoad("amiEla")
+                    } }>
+                        {
+                            Object.keys(imgData).length>0?
+                            <Card id={data[0].id} src={imgData.amiEla.imgHtml} changeShowModal={props.changechangeModal} />:null
+                        }
                 </div>       
                 <div className='main_imgs'>
                     <div className='scond_img_container'>
-                        <div className='scond_first_img_box first'>
-                             <Card id={data[0].id} src={data[0].src} changeShowModal={props.changeModal}/>
+                        <div className='scond_first_img_box first' onClick={()=>{ 
+                            props.getImages("/api/image")
+                            props.changePayLoad("amiFd")
+                        } }>
+                            {
+                                Object.keys(imgData).length>0? 
+                                <Card id={data[0].id} src={imgData.amiFd.imgHtml} changeShowModal={props.changechangeModal} />:null
+                            }
                         </div>   
-                        <div className='scond_first_img_box scond'>
-                         <Card id={data[0].id} src={data[0].src} changeShowModal={props.changeModal}/>  
+                        <div className='scond_first_img_box scond' onClick={()=>{ 
+                            props.getImages("/api/image")
+                            props.changePayLoad("amiLa")
+                        } }>
+                            {
+                                Object.keys(imgData).length>0? 
+                                <Card id={data[0].id} src={imgData.amiLa.imgHtml} changeShowModal={props.changechangeModal} />:null
+                            }
                         </div>
                     </div>
                     <div className='scond_bottom_img_container'>
-                        <div className='scond_bottom_img_box'>
-                            <Card id={data[0].id} src={data[0].src} changeShowModal={props.changeModal}/>  
+                        <div className='scond_bottom_img_box'onClick={()=>{ 
+                            props.getImages("/api/image")
+                            props.changePayLoad("gems")
+                        } }>
+                            {
+                                Object.keys(imgData).length>0? 
+                                <Card id={data[0].id} src={imgData.gems.imgHtml} changeShowModal={props.changechangeModal} />:null
+                            }
                         </div>
                     </div>
                 </div>
