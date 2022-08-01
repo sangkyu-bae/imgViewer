@@ -159,12 +159,8 @@ function Project(props) {
         checkAutoModalData();
     }
 
-    const changePayLoad=(checkpayload)=>{
-        console.log("dd");
-        console.log(checkpayload)
-        setPayload(checkpayload) 
-    }
-    useState(()=>{
+    const changePayLoad=(checkpayload)=>setPayload(checkpayload) 
+    useEffect(()=>{
         console.log(payload);
     },[payload])                              
     const getImages=(url)=>{
@@ -176,6 +172,8 @@ function Project(props) {
                         setIsLoding(false);
                         if(url==="/init")checkModalandSetData(res.data,true);
                         else checkModalandSetData(res.data,false);
+
+                        console.log(res.data);
                     } 
                 ).catch(
                     res=>console.log(res.message)
@@ -198,7 +196,13 @@ function Project(props) {
         }else{ 
            if(payload==='amiFd'){
                 setModalData(amiFd);
-            };
+            }else if(payload==='amiEla'){
+                setModalData(amiEla);
+            }else if(payload==='amiLa'){
+                setModalData(amiLa);
+            }else if(payload==='gems'){
+                setModalData(gems);
+            }
         }
         changeShowModal()
      }
@@ -216,6 +220,7 @@ function Project(props) {
             setAmiLa(...amiLa,imgData.amiLa);
             setGoci2Ral(...goci2Ral,imgData.goci2Ral);
             setGoic2Fd(...goic2Fd,imgData.goic2Fd);
+            setGems(...gems,imgData.gems);
         }
     }
 
@@ -279,9 +284,10 @@ function Project(props) {
      
             <div className='project_container'>
                 <div className='project_img_box'>
-                    <Title data={topData} settings={settings} imgSrc={imgSrc} changeImg={changeImg} 
-                    imgData={imgData} initImgData={initImgData} changeModal={changeShowModal} getImages={getImages} changePayLoad={changePayLoad}></Title>
-                    <Bottom data={bottomData} isMode={isMode} changeShowModal={changeShowModal} ></Bottom>
+                    <Title data={topData} settings={settings} imgSrc={imgSrc} changeImg={changeImg} imgData={imgData}
+                     initImgData={initImgData} changeModal={changeShowModal} getImages={getImages} changePayLoad={changePayLoad}></Title>
+                    <Bottom data={bottomData}  settings={settings} changeShowModal={changeShowModal} initImgData={initImgData}
+                    changeModal={changeShowModal} getImages={getImages} changePayLoad={changePayLoad}></Bottom>
                 </div>
                 <div className='project_side_box'>
                     <Card id={topData[0].id} src={topData[0].src} changeShowModal={changeShowModal}/>

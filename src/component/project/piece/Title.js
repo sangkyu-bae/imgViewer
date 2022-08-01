@@ -10,7 +10,7 @@ import Card from './Card';
 function Title(props) {
     const data=props.data;
     const settings = props.settings;
-    // const imgData=props.initImgData;
+
     const [NewImg,setNewImg]=useState('');
     const [imgData,setImgData]=useState([]);
 
@@ -36,8 +36,8 @@ function Title(props) {
         <div className='img_box'>
             <div className='dispaly_flex'>
                 <div className='main_img borders' onClick={()=>{ 
-                    props.getImages("/api/image")
                     props.changePayLoad("amiEla")
+                    props.getImages("/api/image")
                     } }>
                         {
                             Object.keys(imgData).length>0?
@@ -47,8 +47,8 @@ function Title(props) {
                 <div className='main_imgs'>
                     <div className='scond_img_container'>
                         <div className='scond_first_img_box first' onClick={()=>{ 
-                            props.getImages("/api/image")
                             props.changePayLoad("amiFd")
+                            props.getImages("/api/image")
                         } }>
                             {
                                 Object.keys(imgData).length>0? 
@@ -56,8 +56,8 @@ function Title(props) {
                             }
                         </div>   
                         <div className='scond_first_img_box scond' onClick={()=>{ 
-                            props.getImages("/api/image")
                             props.changePayLoad("amiLa")
+                            props.getImages("/api/image")
                         } }>
                             {
                                 Object.keys(imgData).length>0? 
@@ -67,8 +67,8 @@ function Title(props) {
                     </div>
                     <div className='scond_bottom_img_container'>
                         <div className='scond_bottom_img_box'onClick={()=>{ 
-                            props.getImages("/api/image")
                             props.changePayLoad("gems")
+                            props.getImages("/api/image")
                         } }>
                             {
                                 Object.keys(imgData).length>0? 
